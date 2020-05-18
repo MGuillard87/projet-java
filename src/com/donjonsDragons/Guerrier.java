@@ -4,16 +4,16 @@ package com.donjonsDragons;
 // Création de la classe Guerrier
 public class Guerrier extends Personnage {
 
-    // Stocke le niveau de vie du guerrier
-    private int niveauDeVie = 5;
-    // Stocke la force d'attaque du guerrier
-    private int forceAttaque = 5;
+// mise en place des attribut avec leur portée:private
+    protected int niveauDeVie = 5;
+    protected int forceAttaque = 5;
     private String bouclier = "Broquel";
     private String arme = "Epée";
 
 
-    // mise en place des 3 constructeurs de la classe Guerrier
+    // mise en place des 3 constructeurs de la classe Guerrier: permet d'initialiser l'objet guerrier
     public Guerrier() {
+        
     }
 
     public Guerrier(String nom) {
@@ -21,32 +21,28 @@ public class Guerrier extends Personnage {
     }
 
     public Guerrier(String nom,int niveauDeVie, int forceAttaque) {
-     this.nom = nom;
-     this.niveauDeVie = niveauDeVie;
-     this.forceAttaque = forceAttaque;
+        super.nom = nom;
+        this.niveauDeVie = niveauDeVie;
+        this.forceAttaque = forceAttaque;
+        }
+// méthodes:
+
+    // méthode toString mis en place
+    public String toString() {
+        return "Guerrier " + super.nom +  ": " +
+                "niveauDeVie => " + niveauDeVie +
+                ", forceAttaque => " + forceAttaque +
+                ", bouclier =>'" + bouclier + '\'' +
+                ", arme =>'" + arme + '\''
+                ;
     }
 
-    // méthode qui pourrait etre gérer par classe perso ou menu
-    public void afficherMenuGuerrier() {
-     String afficherInfo = "Afficher les informations sur le Guerrier (i)";
-     String modifPerso = "Modifier les informations du Guerrier (m)";
-     System.out.println(afficherInfo);
-     System.out.println(modifPerso);
-    }
 
-
-
-    // méthode toString à mettre en place
-    public void affichInfoGuerrier() {
-     System.out.println("Le niveau de vie du guerrier est de : " + this.niveauDeVie + "points");
-     System.out.println("La force d'attaque du guerrier est de : " + this.forceAttaque + "points");
-
-    }
+    // Mise en place des getters et setters
 
     public int getNiveauDeVie() {
         return niveauDeVie;
     }
-
     public void setNiveauDeVie(int niveauDeVie) {
         this.niveauDeVie = niveauDeVie;
     }
@@ -54,7 +50,6 @@ public class Guerrier extends Personnage {
     public int getForceAttaque() {
         return forceAttaque;
     }
-
     public void setForceAttaque(int forceAttaque) {
         this.forceAttaque = forceAttaque;
     }
@@ -62,7 +57,6 @@ public class Guerrier extends Personnage {
     public String getBouclier() {
         return bouclier;
     }
-
     public void setBouclier(String bouclier) {
         this.bouclier = bouclier;
     }
@@ -70,7 +64,6 @@ public class Guerrier extends Personnage {
     public String getArme() {
         return arme;
     }
-
     public void setArme(String arme) {
         this.arme = arme;
     }

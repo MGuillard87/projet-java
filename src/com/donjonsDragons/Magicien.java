@@ -4,14 +4,10 @@ import java.net.URL;
 
 public class Magicien extends Personnage {
 
-    // Stocke le nom du Magicien
-    private String nom;
-    // Stocke le niveau de vie du Magicien
-    private int niveauDeVie = 3;
-    // Stocke la force d'attaque du Magicien
-    private int forceAttaque = 8;
-    private String philtres;
-    private String sort;
+    protected int niveauDeVie = 3;
+    protected int forceAttaque = 8;
+    private String philtres = "Illusion";
+    private String sort = "Temps";
 
 
     // mise en place des 3 constructeurs de la classe Magicien
@@ -19,29 +15,53 @@ public class Magicien extends Personnage {
     {
     }
     public Magicien(String nom) {
-        this.nom = nom;
+        super.nom = nom;
     }
 
     public Magicien(String nom, int niveauDeVie, int forceAttaque) {
-        this.nom = nom;
+        super.nom = nom;
         this.niveauDeVie = niveauDeVie;
         this.forceAttaque = forceAttaque;
 
     }
 
-    public void afficherMenuMagicien() {
-        String afficherInfo = "Afficher les informations sur le Magicien (i)";
-        String modifPerso = "Modifier les informations du Magicien (m)";
-        System.out.println(afficherInfo);
-        System.out.println(modifPerso);
-    }
-    // création des getter
-    public String getNom() {
-        return nom;
+    // méthode "magique" toString
+    public String toString() {
+        return  "Magicien " + super.nom +  ": " +
+                "niveauDeVie => " + niveauDeVie +
+                ", forceAttaque => " + forceAttaque +
+                ", philtres =>'" + philtres + '\'' +
+                ", sort =>'" + sort + '\''
+                ;
     }
 
-    // Création des setter
-    public void setNom(String nom) {
-        this.nom = nom;
+    // création des getter et setter
+
+    public int getNiveauDeVie() {
+        return niveauDeVie;
+    }
+    public void setNiveauDeVie(int niveauDeVie) {
+        this.niveauDeVie = niveauDeVie;
+    }
+
+    public int getForceAttaque() {
+        return forceAttaque;
+    }
+    public void setForceAttaque(int forceAttaque) {
+        this.forceAttaque = forceAttaque;
+    }
+
+    public String getPhiltres() {
+        return philtres;
+    }
+    public void setPhiltres(String philtres) {
+        this.philtres = philtres;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 }

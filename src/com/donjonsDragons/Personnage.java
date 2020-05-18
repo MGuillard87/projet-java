@@ -1,13 +1,25 @@
 package com.donjonsDragons;
 
-public class Personnage {
-    // Stocke le nom du guerrier
-    // éviter un attribut avec valeur NULL
-    protected String nom;
+public abstract class Personnage {
 
-    // créer constructor
+    // Stocke le nom du guerrier et magicien (enfants de cette classe)
+    // éviter un attribut avec valeur NULL !!
+    protected String nom = "Charlie";
 
-    // Création des Getter
+    // Placer les autres attributs que magicien et guerrier ont en commun ?
+
+//     créer constructor
+
+    public Personnage() {
+
+    }
+
+    public Personnage(String nom) {
+        this.nom = nom;
+    }
+
+
+    // Création des Getter (à faire pour les autres attributs)
     public String getNom() {
         return this.nom;
     }
@@ -17,7 +29,4 @@ public class Personnage {
         this.nom = nom;
     }
 
-    public String toString() {
-        return "Personnage:" + this.nom;
-    }
 }
