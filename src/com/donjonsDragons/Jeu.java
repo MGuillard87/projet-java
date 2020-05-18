@@ -17,6 +17,12 @@ public class Jeu {
         return str;
     }
 //méthode pour démarrer la partie
+    
+    // -- Commentaire Flo -- // 
+    // Là il y a un truc un peu étrange -> tu fais un try cacth pour attrapper ton exception
+    // Et pourtant tu mets un throws dans ta définition de méthode -> c'est l'un ou l'autre mais pas les 2.  
+    // -- Fin Commentaire Flo -- // 
+    
     public void demarrerPartie() throws PersonnageHorsPlateauException {
         String str = "p";
         while (str.equals("p")) {
@@ -42,6 +48,10 @@ public class Jeu {
         System.out.println("Au revoir!");
     }
 
+// -- Commentaire Flo -- // 
+// Indente ton code :)
+// -- Fin Commentaire Flo -- // 
+    
 // Methode permettant d'obtenir le résultat du Dé au hasard
     public int getRandomNumberInRange(int min, int max) {
     Random r = new Random();
@@ -49,6 +59,10 @@ public class Jeu {
 }
 // Création de la fonction 'lancerLeDe': avec un paramètre 'positionCase', qui indique la position du joueur
 
+// -- Commentaire Flo -- // 
+// lancerLeDe() et getRandomNumberInRange() pourraient être fusionnées sans soucis je pense, sans perte de clarté
+// -- Fin Commentaire Flo -- // 
+    
     public int lancerLeDe() {
         int de = this.getRandomNumberInRange(1, 6);
         System.out.println(" Lancer du dé vaut "+ de);

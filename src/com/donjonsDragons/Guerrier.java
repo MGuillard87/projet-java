@@ -9,7 +9,10 @@ public class Guerrier extends Personnage {
     private String bouclier = "Broquel";
 
 
-
+    // -- Commentaire Flo -- // 
+    // Oublie pas de dire this aux attributs --> marque de respect :)  
+    // -- Fin Commentaire Flo -- // 
+    
     // mise en place des 3 constructeurs de la classe Guerrier: permet d'initialiser l'objet guerrier
     public Guerrier() {
         super();

@@ -21,6 +21,11 @@ public abstract class Personnage {
     public Personnage(String nom) {
         this.nom = nom;
     }
+    
+// -- Commentaire Flo -- // 
+// Ca c'est étrange --> tu passes des paramètres à ton copnstructeur mais tu ne  
+// t'en sers pas !   
+// -- Fin Commentaire Flo -- // 
 
     public Personnage(String nom, int niveauDeVie, int forceAttaque) {
     }
