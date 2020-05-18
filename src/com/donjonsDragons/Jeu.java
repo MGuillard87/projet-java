@@ -13,7 +13,7 @@ public class Jeu {
 // méthode permettant au joueur de recommencer une partie ou de quitter le jeu
     public String menuRecommencerQuitter() {
         System.out.println(MSG_MENU_JEU);
-        String str = sc.nextLine();
+        String str = this.sc.nextLine();
         return str;
     }
 //méthode pour démarrer la partie
@@ -22,11 +22,22 @@ public class Jeu {
         while (str.equals("p")) {
             System.out.println(" Départ: case 1 ");
             this.positionCase = 1;
-            while (this.positionCase != 64) {
-                this.positionCase = avancer(this.positionCase);
+            try {
+                while (this.positionCase != 64) {
+                    this.positionCase = avancer(this.positionCase);
+                }
+                System.out.println(" Arrivée: bravo ! ");
+                str = menuRecommencerQuitter();
+            } catch (PersonnageHorsPlateauException exception) {
+                exception.printStackTrace();
+
+            } finally {
+                int maxDeCases = 64;
+                if(this.positionCase > maxDeCases) {
+                    int reculer=this.positionCase - maxDeCases;
+                    this.positionCase = maxDeCases;
+                }
             }
-            System.out.println(" Arrivée: bravo ! ");
-            str = menuRecommencerQuitter();
         }
         System.out.println("Au revoir!");
 

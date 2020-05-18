@@ -21,7 +21,10 @@ public class Menu {
     une seul fois. la convention = nommer les constantes en majuscules.
     */
 
-
+    /**
+     *
+     * @throws PersonnageHorsPlateauException
+     */
     public void menuJeu() throws PersonnageHorsPlateauException {
         // affichage du menu
         String str = choixPremierMenu();
@@ -83,6 +86,10 @@ public class Menu {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     //Méthodes permettant de creer guerrier et magicien
     public Guerrier creerGuerrier() {
 
