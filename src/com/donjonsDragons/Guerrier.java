@@ -29,7 +29,7 @@ public class Guerrier extends Personnage {
 
     public String toString() {
         return super.toString() +
-                ", arme =>'" + super.arme + '\'' +
+                ", arme =>" + super.arme +
                 ", bouclier => " + this.bouclier
                 ;
     }

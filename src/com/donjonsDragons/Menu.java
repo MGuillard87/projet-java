@@ -10,8 +10,7 @@ public class Menu {
     private final String MODIF_PERSO_MENU = "Vous pouvez modifier votre personnage";
     private final String INFO_PERSO_MENU = "Voici les informations sur votre personnage";
     private final String GAME_START_MENU = "Démarrer une partie (d)";
-    private Guerrier guerrier = new Guerrier();
-    private Magicien magicien = new Magicien();
+    private Personnage personnage;
     private Jeu jeu = new Jeu();
     Scanner sc = new Scanner(System.in);
 
@@ -78,15 +77,15 @@ public class Menu {
     public void creationPersos(String str1) {
         switch (str1) {
             case "g":
-                this.guerrier = creerGuerrier();
+                creerGuerrier();
                 break;
             default:
-                this.magicien = creerMagicien();
+                creerMagicien();
         }
     }
 
     //Méthodes permettant de creer guerrier et magicien
-    public Guerrier creerGuerrier() {
+    public void creerGuerrier() {
 
         String choixNomG;
         do {
@@ -94,18 +93,16 @@ public class Menu {
             choixNomG = sc.nextLine();
         } while (choixNomG.isEmpty());
 
-        Guerrier guerrier = new Guerrier(choixNomG);
-        return guerrier;
+        this.personnage = new Guerrier(choixNomG);
     }
 
-    public Magicien creerMagicien() {
+    public void creerMagicien() {
         String choixNomM;
         do {
             System.out.println("Rentrer le nom du magicien");
             choixNomM = sc.nextLine();
         } while (choixNomM.isEmpty());
-        Magicien magicien = new Magicien(choixNomM);
-        return magicien;
+         this.personnage = new Magicien(choixNomM);
     }
 
 
@@ -115,17 +112,9 @@ public class Menu {
     }
 
     public void afficherInfo(String str1) {
-        switch (str1) {
-            //info magicien
-            case "m":
-                System.out.println(this.magicien);
-                break;
-            default:
-                // application de la méthode magique "toString": qui retourne la représentation de l'objet en chaine de caractère
-                System.out.println(this.guerrier);
-                // afficher les autres informations
+            //info magicien ou guerrier
+                System.out.println(this.personnage);
                 afficherMenuPerso();
-        }
     }
 
     // méthode qui affiche sous-menu: info et modif perso
@@ -151,12 +140,12 @@ public class Menu {
     public void mettreAjourGuerrier() {
         System.out.println("Rentrer un nouveau nom");
         String newNomG = sc.nextLine();
-        this.guerrier.setNom(newNomG);
+        this.personnage.setNom(newNomG);
     }
     public void mettreAjourMagicien() {
         System.out.println("Rentrer un nouveau nom");
         String newNomM = sc.nextLine();
-        this.magicien.setNom(newNomM);
+        this.personnage.setNom(newNomM);
     }
 
     // méthode permettant de quitter le jeu
