@@ -4,64 +4,41 @@ import java.net.URL;
 
 public class Magicien extends Personnage {
 
-    protected int niveauDeVie = 3;
-    protected int forceAttaque = 8;
-    private String philtres = "Illusion";
-    private String sort = "Temps";
+    private String philtre = "Illusion";
+
 
 
     // mise en place des 3 constructeurs de la classe Magicien
     public Magicien()
     {
+        super();
+        philtre = "Illusion";
     }
     public Magicien(String nom) {
-        super.nom = nom;
+        super(nom);
     }
 
     public Magicien(String nom, int niveauDeVie, int forceAttaque) {
-        super.nom = nom;
-        this.niveauDeVie = niveauDeVie;
-        this.forceAttaque = forceAttaque;
+        super(nom, niveauDeVie, forceAttaque);
 
     }
+// méthode to String
 
-    // méthode "magique" toString
     public String toString() {
-        return  "Magicien " + super.nom +  ": " +
-                "niveauDeVie => " + niveauDeVie +
-                ", forceAttaque => " + forceAttaque +
-                ", philtres =>'" + philtres + '\'' +
-                ", sort =>'" + sort + '\''
+        return super.toString() +
+                ", sort =>'" + this.sort + '\'' +
+                ", philtre => " + this.philtre
                 ;
     }
 
-    // création des getter et setter
-
-    public int getNiveauDeVie() {
-        return niveauDeVie;
-    }
-    public void setNiveauDeVie(int niveauDeVie) {
-        this.niveauDeVie = niveauDeVie;
-    }
-
-    public int getForceAttaque() {
-        return forceAttaque;
-    }
-    public void setForceAttaque(int forceAttaque) {
-        this.forceAttaque = forceAttaque;
-    }
+// création des getter et setter
 
     public String getPhiltres() {
-        return philtres;
+        return philtre;
     }
     public void setPhiltres(String philtres) {
-        this.philtres = philtres;
+        this.philtre = philtres;
     }
 
-    public String getSort() {
-        return sort;
-    }
-    public void setSort(String sort) {
-        this.sort = sort;
-    }
+
 }

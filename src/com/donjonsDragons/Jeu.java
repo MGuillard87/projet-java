@@ -24,7 +24,7 @@ public class Jeu {
             this.positionCase = 1;
             try {
                 while (this.positionCase != 64) {
-                    this.positionCase = avancer(this.positionCase);
+                    this.positionCase = jouerUnTour(this.positionCase);
                 }
                 System.out.println(" Arrivée: bravo ! ");
                 str = menuRecommencerQuitter();
@@ -40,17 +40,16 @@ public class Jeu {
             }
         }
         System.out.println("Au revoir!");
-
-
     }
 
-// Création de la fonction 'lancer': avec un paramètre 'positionCase', qui indique la position du joueur
+// Methode permettant d'obtenir le résultat du Dé au hasard
     public int getRandomNumberInRange(int min, int max) {
     Random r = new Random();
     return r.nextInt((6 - 1) + 1) + 1;
 }
+// Création de la fonction 'lancerLeDe': avec un paramètre 'positionCase', qui indique la position du joueur
 
-    public int lancer() {
+    public int lancerLeDe() {
         int de = this.getRandomNumberInRange(1, 6);
         System.out.println(" Lancer du dé vaut "+ de);
         int scoreDe=de;
@@ -58,13 +57,13 @@ public class Jeu {
     }
 
 // Création de la fonction 'avancer': avec un paramètre 'positionCase', qui indique la position du joueur
-    public int avancer(int positionStartCase)
+    public int jouerUnTour(int positionStartCase)
         throws PersonnageHorsPlateauException {
             int maxDeCases = 64;
             if (this.positionCase > maxDeCases) {
                 throw new PersonnageHorsPlateauException();
             } else {
-                int scoreDe = lancer();
+                int scoreDe = lancerLeDe();
                 this.positionCase = positionStartCase + scoreDe;
 
                 System.out.println();

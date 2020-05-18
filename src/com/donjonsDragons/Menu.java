@@ -40,28 +40,27 @@ public class Menu {
                 afficherMenuPerso();
                 afficherQuitterJeu();
                 String str2 = sc.nextLine();
-                switch (str2) {
-                    case "d":
+                    switch (str2) {
+                        case "d":
 //                    TODO: ici partie qui demarre le jeu
-                        jeu.demarrerPartie();
-                        break;
+                            jeu.demarrerPartie();
+                            break;
                         // affichage des infos sur personnages
-                    case "i":
-                        afficherInfo(str1);
-                        break;
-                    // modification sur personnages
-                    case "m":
-                        modifierPersonnages(str1);
-                        break;
-                    default:
-                        System.out.println(FIN_JEU_MENU);
-                }
+                        case "i":
+                            afficherInfo(str1);
+                            break;
+                        // modification sur personnages
+                        case "m":
+                            modifierPersonnages(str1);
+                            break;
+                        default:
+                            System.out.println(FIN_JEU_MENU);
+                    }
 
         } else {
             System.out.println(FIN_JEU_MENU);
         }
     }
-
 
 
     public String choixPremierMenu() {
@@ -86,10 +85,6 @@ public class Menu {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     //Méthodes permettant de creer guerrier et magicien
     public Guerrier creerGuerrier() {
 
