@@ -10,6 +10,11 @@ public class Menu {
     private final String MODIF_PERSO_MENU = "Vous pouvez modifier votre personnage";
     private final String INFO_PERSO_MENU = "Voici les informations sur votre personnage";
     private final String GAME_START_MENU = "Démarrer une partie (d)";
+    
+// -- Commentaire Flo -- // 
+// Pas besoin d'avoir un Guerrier et un Magicien instanciés, tu ne vas pas te servir des deux. 
+// Déclare plutôt le supertype des deux et sers toi de ça
+// -- Fin Commentaire Flo -- // 
     private Guerrier guerrier = new Guerrier();
     private Magicien magicien = new Magicien();
     private Jeu jeu = new Jeu();
@@ -35,6 +40,9 @@ public class Menu {
             while (!(str1.equals("m") || str1.equals("g"))) {
                  str1 = choixPerso();
             }
+            // -- Commentaire Flo -- // 
+            // Indentation !  
+            // -- Fin Commentaire Flo -- // 
                 creationPersos(str1);
                 afficherDemarrerPartie();
                 afficherMenuPerso();
@@ -86,6 +94,14 @@ public class Menu {
     }
 
     //Méthodes permettant de creer guerrier et magicien
+    
+    
+// -- Commentaire Flo -- // 
+// Tire le meilleur parti de l'héritage ! 
+// Fusionne les deux méthodes d'après en une seule ! 
+// public Personnage creerPersonnage()
+// -- Fin Commentaire Flo -- // 
+    
     public Guerrier creerGuerrier() {
 
         String choixNomG;
@@ -136,6 +152,10 @@ public class Menu {
         System.out.println(modifPerso);
     }
 
+        
+// -- Commentaire Flo -- // 
+// N'oublie pas le break dans le default
+// -- Fin Commentaire Flo -
     public void modifierPersonnages(String str1) {
         System.out.println(MODIF_PERSO_MENU);
         switch (str1) {
@@ -144,6 +164,7 @@ public class Menu {
                 break;
             default:
                 mettreAjourGuerrier();
+                
         }
     }
 
