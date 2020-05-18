@@ -1,5 +1,8 @@
 package com.donjonsDragons;
 
+// -- Commentaire Flo -- // 
+// A quoi sert cet import ? 
+// -- Fin Commentaire Flo -- // 
 import java.net.URL;
 
 public class Magicien extends Personnage {
