@@ -18,6 +18,10 @@ public class Arme {
         return force;
     }
 
+// -- Commentaire Flo -- // 
+// Indente ton code correctement. 
+// -- Fin Commentaire Flo -- // 
+
         public String getNom() {
             return nom;
         }
