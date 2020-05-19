@@ -1,5 +1,7 @@
-package com.donjonsDragons;
+package com.personnage;
 
+
+import com.personnage.Personnage;
 
 // Création de la classe Guerrier
 public class Guerrier extends Personnage {
@@ -8,15 +10,10 @@ public class Guerrier extends Personnage {
 
     private String bouclier = "Broquel";
 
-
-    // -- Commentaire Flo -- // 
-    // Oublie pas de dire this aux attributs --> marque de respect :)  
-    // -- Fin Commentaire Flo -- // 
-    
     // mise en place des 3 constructeurs de la classe Guerrier: permet d'initialiser l'objet guerrier
     public Guerrier() {
         super();
-        bouclier = "Broquel";
+        this.bouclier = "Broquel";
 
     }
 

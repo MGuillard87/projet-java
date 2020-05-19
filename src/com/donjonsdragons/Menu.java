@@ -1,4 +1,9 @@
-package com.donjonsDragons;
+package com.donjonsdragons;
+
+import com.personnage.Guerrier;
+import com.personnage.Magicien;
+import com.personnage.Personnage;
+import com.personnage.PersonnageHorsPlateauException;
 
 import java.util.Scanner;
 
@@ -11,25 +16,14 @@ public class Menu {
     private final String INFO_PERSO_MENU = "Voici les informations sur votre personnage";
     private final String GAME_START_MENU = "Démarrer une partie (d)";
     private Personnage personnage;
-
-// -- Commentaire Flo -- //
-// Pas besoin d'avoir un Guerrier et un Magicien instanciés, tu ne vas pas te servir des deux.
-// Déclare plutôt le supertype des deux et sers toi de ça
-// -- Fin Commentaire Flo -- //
-
     private Jeu jeu = new Jeu();
     Scanner sc = new Scanner(System.in);
 
-
-    /* Regarder mon clef "final" et comment déclarer une constante en java:
+    /*
     Le mot-clé final indique qu'on assigner une valeur à la variable
     une seul fois. la convention = nommer les constantes en majuscules.
     */
 
-    /**
-     *
-     * @throws PersonnageHorsPlateauException
-     */
     public void menuJeu() throws PersonnageHorsPlateauException {
         // affichage du menu
         String str = choixPremierMenu();
@@ -40,30 +34,27 @@ public class Menu {
             while (!(str1.equals("m") || str1.equals("g"))) {
                  str1 = choixPerso();
             }
-            // -- Commentaire Flo -- //
-            // Indentation !
-            // -- Fin Commentaire Flo -- //
-                creationPersos(str1);
+                creerPersonnage(str1);
                 afficherDemarrerPartie();
                 afficherMenuPerso();
                 afficherQuitterJeu();
                 String str2 = sc.nextLine();
-                    switch (str2) {
-                        case "d":
+                switch (str2) {
+                    case "d":
 //                    TODO: ici partie qui demarre le jeu
-                            jeu.demarrerPartie();
-                            break;
-                        // affichage des infos sur personnages
-                        case "i":
-                            afficherInfo(str1);
-                            break;
-                        // modification sur personnages
-                        case "m":
-                            modifierPersonnages(str1);
-                            break;
-                        default:
-                            System.out.println(FIN_JEU_MENU);
-                    }
+                        jeu.demarrerPartie();
+                        break;
+                    // affichage des infos sur personnages
+                    case "i":
+                        afficherInfo(str1);
+                        break;
+                    // modification sur personnages
+                    case "m":
+                        modifierPersonnages(str1);
+                        break;
+                    default:
+                        System.out.println(FIN_JEU_MENU);
+                }
 
         } else {
             System.out.println(FIN_JEU_MENU);
@@ -83,43 +74,20 @@ public class Menu {
         return str1;
     }
 
-    public void creationPersos(String str1) {
+    public void creerPersonnage(String str1) {
+        String choixNom;
+        do {
+            System.out.println("Rentrer le nom du personnage");
+            choixNom = sc.nextLine();
+        } while (choixNom.isEmpty());
         switch (str1) {
             case "g":
-                creerGuerrier();
+                this.personnage = new Guerrier(choixNom);
                 break;
             default:
-                creerMagicien();
+                this.personnage = new Magicien(choixNom);
         }
     }
-
-    //Méthodes permettant de creer guerrier et magicien
-    // -- Commentaire Flo -- //
-// Tire le meilleur parti de l'héritage !
-// Fusionne les deux méthodes d'après en une seule !
-// public Personnage creerPersonnage()
-// -- Fin Commentaire Flo -- //
-
-    public void creerGuerrier() {
-
-        String choixNomG;
-        do {
-            System.out.println("Rentrer le nom du guerrier");
-            choixNomG = sc.nextLine();
-        } while (choixNomG.isEmpty());
-
-        this.personnage = new Guerrier(choixNomG);
-    }
-
-    public void creerMagicien() {
-        String choixNomM;
-        do {
-            System.out.println("Rentrer le nom du magicien");
-            choixNomM = sc.nextLine();
-        } while (choixNomM.isEmpty());
-         this.personnage = new Magicien(choixNomM);
-    }
-
 
     // méthode permettant de démarrer la partie
     public void afficherDemarrerPartie() {
@@ -140,10 +108,6 @@ public class Menu {
         System.out.println(modifPerso);
     }
 
-
-// -- Commentaire Flo -- //
-// N'oublie pas le break dans le default
-// -- Fin Commentaire Flo -
     public void modifierPersonnages(String str1) {
         System.out.println(MODIF_PERSO_MENU);
         switch (str1) {
@@ -152,7 +116,6 @@ public class Menu {
                 break;
             default:
                 mettreAjourGuerrier();
-
         }
     }
 

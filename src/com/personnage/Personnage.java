@@ -1,15 +1,17 @@
-package com.donjonsDragons;
+package com.personnage;
 
 public abstract class Personnage {
 
+
     // Stocke le nom du guerrier et magicien (enfants de cette classe)
     // éviter un attribut avec valeur NULL !!
-    protected String nom = "Charlie";
-    protected int niveauDeVie = 5;
-    protected int forceAttaque = 5;
+    // mettre les attributs en private
+    private String nom = "Charlie";
+    private int niveauDeVie = 5;
+    private int forceAttaque = 5;
     protected String arme = "Epée";
-    protected int vieMax = 10;
-    protected int attaqueMax = 10;
+    private int vieMax = 10;
+    private int attaqueMax = 10;
     protected String sort = "Temps";
 
 //     Constructeur
@@ -19,13 +21,9 @@ public abstract class Personnage {
     }
 
     public Personnage(String nom) {
-        this.nom = nom;
+
     }
-    
-// -- Commentaire Flo -- // 
-// Ca c'est étrange --> tu passes des paramètres à ton copnstructeur mais tu ne  
-// t'en sers pas !   
-// -- Fin Commentaire Flo -- // 
+
 
     public Personnage(String nom, int niveauDeVie, int forceAttaque) {
     }

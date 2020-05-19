@@ -1,4 +1,6 @@
-package com.donjonsDragons;
+package com.donjonsdragons;
+
+import com.personnage.PersonnageHorsPlateauException;
 
 import java.util.Scanner;
 
@@ -14,7 +16,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Menu menu = new Menu();
         menu.menuJeu();
-
 
     }
 }
