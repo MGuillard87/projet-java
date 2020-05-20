@@ -1,7 +1,5 @@
-package com.personnage;
+package com.personnages;
 
-
-import com.personnage.Personnage;
 
 // Création de la classe Guerrier
 public class Guerrier extends Personnage {

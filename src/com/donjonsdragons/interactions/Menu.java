@@ -1,9 +1,9 @@
-package com.donjonsdragons;
+package com.donjonsdragons.interactions;
 
-import com.personnage.Guerrier;
-import com.personnage.Magicien;
-import com.personnage.Personnage;
-import com.personnage.PersonnageHorsPlateauException;
+import com.donjonsdragons.interactions.Jeu;
+import com.personnages.Guerrier;
+import com.personnages.Magicien;
+import com.personnages.Personnage;
 
 import java.util.Scanner;
 
@@ -24,7 +24,7 @@ public class Menu {
     une seul fois. la convention = nommer les constantes en majuscules.
     */
 
-    public void menuJeu() throws PersonnageHorsPlateauException {
+    public void menuJeu() {
         // affichage du menu
         String str = choixPremierMenu();
         // utilisateur ne quitte pas le jeu et veut créer un personnage

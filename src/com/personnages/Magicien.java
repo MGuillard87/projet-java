@@ -1,6 +1,4 @@
-package com.personnage;
-
-import com.personnage.Personnage;
+package com.personnages;
 
 public class Magicien extends Personnage {
 

@@ -1,4 +1,4 @@
-package com.personnage;
+package com.personnages;
 
 public abstract class Personnage {
 

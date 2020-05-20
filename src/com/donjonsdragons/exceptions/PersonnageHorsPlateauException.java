@@ -1,4 +1,4 @@
-package com.personnage;
+package com.donjonsdragons.exceptions;
 
 public class PersonnageHorsPlateauException extends Exception {
 

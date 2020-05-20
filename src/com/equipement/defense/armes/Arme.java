@@ -1,15 +1,22 @@
-package com.attaque;
+package com.equipement.defense.armes;
 
-public class Arme {
+import com.plateau.cases.Case;
+
+public class Arme extends Case {
 // attributs
-    private String nom = "Lance";
-    private int force = 5;
+    protected String nom = "Massue";
+    protected int force = 3;
 
 // constructeur
+    public Arme() {
+
+    }
+
     public Arme(String nom, int force) {
         this.nom = nom;
         this.force = force;
     }
+
 
 // méthodes
 
@@ -17,14 +24,9 @@ public class Arme {
     public int getForce() {
         return force;
     }
-
-// -- Commentaire Flo -- // 
-// Indente ton code correctement. 
-// -- Fin Commentaire Flo -- // 
-
-        public String getNom() {
-            return nom;
-        }
+    public String getNom() {
+        return nom;
+    }
 
 // setter
     public void setNom(String nom) {

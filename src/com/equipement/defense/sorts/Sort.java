@@ -1,16 +1,23 @@
-package com.attaque;
- 
-public class Sort {
+package com.equipement.defense.sorts;
+
+import com.plateau.cases.Case;
+
+public class Sort extends Case {
     // attributs
-    private String nom = "bouleDeFeu";
-    private int force = 5;
+    protected String nom = "Boule de feu";
+    protected int force = 7;
 
 // constructeur
+
+    public Sort() {
+    }
 
     public Sort(String nom, int force) {
         this.nom = nom;
         this.force = force;
     }
+
+
 
 // méthodes
 

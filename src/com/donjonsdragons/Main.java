@@ -1,6 +1,6 @@
 package com.donjonsdragons;
 
-import com.personnage.PersonnageHorsPlateauException;
+import com.donjonsdragons.interactions.Menu;
 
 import java.util.Scanner;
 
@@ -11,11 +11,14 @@ public class Main {
     // Elle doit être gérée dans un try catch. Probablement ailleurs. Un main avec une exception c'est bizarre  
     // -- Fin Commentaire Flo -- // 
     
-    public static void main(String[] args) throws PersonnageHorsPlateauException {
+    public static void main(String[] args)  {
         // utilisation de Scanner en général ou non?
         Scanner sc = new Scanner(System.in);
         Menu menu = new Menu();
         menu.menuJeu();
+
+
+
 
     }
 }
