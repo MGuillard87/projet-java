@@ -1,9 +1,9 @@
 package com.plateau.cases;
 
-import com.plateau.cases.Case;
+import com.donjonsdragons.interactions.Case;
 
 public class CaseVide extends Case {
-    String message = " Case vide";
+    String message = "Case vide";
 
     // constructeur
 
@@ -11,6 +11,10 @@ public class CaseVide extends Case {
     public String toString() {
        return this.message;
     }
+
+    // méthodes abstraites du parent Case
+
+
 
     // getter et setter
     public String getMessage() {

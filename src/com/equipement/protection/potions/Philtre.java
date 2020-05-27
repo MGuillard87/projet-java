@@ -1,6 +1,7 @@
 package com.equipement.protection.potions;
 
-import com.plateau.cases.Case;
+import com.donjonsdragons.interactions.Case;
+import com.personnages.Personnage;
 
 public class Philtre extends Case {
 
@@ -17,9 +18,23 @@ public class Philtre extends Case {
         this.force = force;
     }
 
-    //méthode toString
+    // méthode toString
+    public String toString() {
+        return " potion: " + this.potion +
+                ", force de la potion: " + this.force
+                ;
+    }
 
-    //méthodes
+    // methodes
+    public void interaction(Personnage personnage) {
+        int nouvelleVie = personnage.getNiveauDeVie() + this.force;
+        if(nouvelleVie <= personnage.getVieMax()) {
+            personnage.setNiveauDeVie(nouvelleVie);
+        } else {
+            System.out.println("votre niveau de vie est au maximun: " + personnage.getAttaqueMax());
+        }
+    }
+
 
     // getters et setters
     public String getPotion() {

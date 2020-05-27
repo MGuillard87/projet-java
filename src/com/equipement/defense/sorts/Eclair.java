@@ -1,5 +1,8 @@
 package com.equipement.defense.sorts;
 
+import com.personnages.Magicien;
+import com.personnages.Personnage;
+
 public class Eclair extends Sort {
 
     // Constructeur
@@ -13,14 +16,5 @@ public class Eclair extends Sort {
         this.nom = nom;
         this.force = force;
     }
-
-    // méthode toString
-    public String toString() {
-        return " Sort: " + this.nom +
-                ", force du sort: " + this.force
-                ;
-    }
-
-
 
 }

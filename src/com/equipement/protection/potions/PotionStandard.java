@@ -1,5 +1,7 @@
 package com.equipement.protection.potions;
 
+import com.personnages.Personnage;
+
 public class PotionStandard extends Philtre {
     // constructeurs
 
@@ -14,10 +16,6 @@ public class PotionStandard extends Philtre {
         this.force = force;
     }
 
-    // méthode toString
-    public String toString() {
-        return " potion: " + this.potion +
-                ", force de la potion: " + this.force
-                ;
-    }
+
+
 }

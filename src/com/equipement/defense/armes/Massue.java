@@ -1,7 +1,13 @@
 package com.equipement.defense.armes;
 
 import com.equipement.defense.armes.Arme;
+import com.personnages.Guerrier;
+import com.personnages.Magicien;
+import com.personnages.Personnage;
 
+/**
+ * class Massue
+ */
 public class Massue extends Arme {
 
     // constructeur
@@ -12,16 +18,10 @@ public class Massue extends Arme {
     }
 
     public Massue(String nom, int force) {
-      this.nom = nom;
-      this.force = force;
-    }
-
-// méthode toString
-    public String toString() {
-        return " arme: " + this.nom +
-                ", force de l'arme: " + this.force
-                ;
+        this.nom = nom;
+        this.force = force;
     }
 
 
 }
+

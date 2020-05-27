@@ -1,6 +1,8 @@
 package com.equipement.defense.armes;
 
 import com.equipement.defense.armes.Arme;
+import com.personnages.Guerrier;
+import com.personnages.Personnage;
 
 public class Epee extends Arme {
     // constructeur
@@ -16,10 +18,4 @@ public class Epee extends Arme {
         this.force = force;
     }
 
-    // méthode toString
-    public String toString() {
-        return " arme: " + this.nom +
-                ", force de l'arme: " + this.force
-                ;
-    }
 }

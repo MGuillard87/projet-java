@@ -1,5 +1,8 @@
 package com.equipement.defense.sorts;
 
+import com.personnages.Magicien;
+import com.personnages.Personnage;
+
 public class BouleDeFeu extends Sort {
 
     // Constructeur
@@ -14,15 +17,6 @@ public class BouleDeFeu extends Sort {
         this.force = force;
     }
 
-    // méthode toString
-    public String toString() {
-        return " Sort: " + this.nom +
-                ", force du sort: " + this.force
-                ;
-    }
-
-
     //Méthodes
-
 
 }
