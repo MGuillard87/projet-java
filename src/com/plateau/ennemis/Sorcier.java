@@ -8,9 +8,12 @@ public class Sorcier extends Ennemi {
     public Sorcier() {
         super();
         this.nom = "Sorcier";
+        this.niveauDeVie = 9;
+        this.forceAttaque = 2;
     }
 
     public Sorcier(String nom, int niveauDeVie, int forceAttaque) {
     }
+
 
 }

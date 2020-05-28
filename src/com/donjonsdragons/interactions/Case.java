@@ -3,6 +3,9 @@ package com.donjonsdragons.interactions;
 import com.personnages.Guerrier;
 import com.personnages.Magicien;
 import com.personnages.Personnage;
+import com.plateau.cases.CaseVide;
+
+import java.util.ArrayList;
 
 public abstract class Case {
 
@@ -19,6 +22,10 @@ public abstract class Case {
         if (personnage instanceof Guerrier) {
             System.out.println("Vous êtes un guerrier, voici:" + "\n" + personnage.toString());
         }
+
+    }
+
+    public void interaction(Personnage personnage, ArrayList<Case> plateau, int positionJoueur) {
 
     }
 

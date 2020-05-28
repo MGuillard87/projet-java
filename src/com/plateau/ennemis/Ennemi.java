@@ -2,6 +2,10 @@ package com.plateau.ennemis;
 
 import com.donjonsdragons.interactions.Case;
 import com.personnages.Personnage;
+import com.plateau.cases.CaseVide;
+
+import java.util.ArrayList;
+
 
 public class Ennemi extends Case {
 
@@ -31,9 +35,17 @@ public class Ennemi extends Case {
 
     // méthodes
 
-    public void interaction(Personnage personnage) {
-        int nouvelleVie = personnage.getNiveauDeVie() - this.forceAttaque;
-        personnage.setNiveauDeVie(nouvelleVie);
+    public void interaction(Personnage personnage, ArrayList plateau, int positionJoueur) {
+        int vieEnnemi = this.niveauDeVie - personnage.getForceAttaque();
+        setNiveauDeVie(vieEnnemi);
+        if (vieEnnemi <= 0) {
+            plateau.set(positionJoueur, new CaseVide());
+            System.out.println("L'ennemi est mort");
+        } else {
+            int nouvelleVie = personnage.getNiveauDeVie() - this.forceAttaque;
+            personnage.setNiveauDeVie(nouvelleVie);
+            System.out.println("L'ennemi s'est enfui");
+        }
     }
 
     // getter

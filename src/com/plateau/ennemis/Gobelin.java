@@ -9,6 +9,8 @@ public class Gobelin extends Ennemi {
     public Gobelin() {
         super();
         this.nom = "Gobelin";
+        this.niveauDeVie = 6;
+        this.forceAttaque = 1;
     }
 
     public Gobelin(String nom, int niveauDeVie, int forceAttaque) {
