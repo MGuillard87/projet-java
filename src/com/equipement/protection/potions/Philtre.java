@@ -31,7 +31,7 @@ public class Philtre extends Case {
         if(nouvelleVie <= personnage.getVieMax()) {
             personnage.setNiveauDeVie(nouvelleVie);
         } else {
-            System.out.println("votre niveau de vie est au maximun: " + personnage.getAttaqueMax());
+            System.out.println("votre niveau de vie est au maximun: " + personnage.getVieMax());
         }
     }
 

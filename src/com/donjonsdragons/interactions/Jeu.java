@@ -47,51 +47,39 @@ public class Jeu {
 
     /**
      * @see # méthode permettant de démarrer la partie
-     * @param personnage
+     * @param personnage permet de récupérer le personnage qui se trouve dans la classe Menu
      */
         public void demarrerPartie(Personnage personnage) {
         String str = "p";
         while (str.equals("p")) {
             genererPlateau();
-            System.out.println("Départ Case n°1: " + this.PLATEAU.get(0));
-            this.positionJoueur = 1;
             Case caseEnCours = this.PLATEAU.get(0);
-            caseEnCours.interaction(personnage);
+            System.out.println("\n" + "Départ Case n°1: " + this.PLATEAU.get(0));
+            this.positionJoueur = 1;
+            traitementCase(caseEnCours, personnage);
+            //methode mort
+            personnage.setNiveauDeVie(-2);
+            recommencerPartie(personnage,str,caseEnCours);
             caseSuivante();
             while (this.positionJoueur != 64) {
                 try {
                     jouerUnTour();
                     caseEnCours = this.PLATEAU.get(this.positionJoueur - 1);
-                    if (caseEnCours instanceof Ennemi) {
-                        caseEnCours.interaction(personnage, this.PLATEAU, this.positionJoueur);
-                    } else {
-                        caseEnCours.interaction(personnage);
-                    }
-                    caseSuivante();
+                    traitementCase(caseEnCours, personnage);
 // TODO: mettre en place une méthode qui vérifie le niveau de vie du personnage: si 0, jeu perdu sinon continuer
-                    if (personnage.getNiveauDeVie() <= 0) {
-                        System.out.println("\n" + "Vous avez perdu... :(");
-                        str = menuRecommencerQuitter();
-                        genererPlateau();
-                        System.out.println("Départ Case n°1: " + this.PLATEAU.get(0));
-                        this.positionJoueur = 1;
-                        reInitialisationPersonnage(personnage, str);
-                    }
+                    recommencerPartie(personnage,str,caseEnCours);
+                    caseSuivante();
                 } catch (PersonnageHorsPlateauException e) {
-                    System.out.println(e.getMessage());
-                    int maxDeCases = 64;
-                    if (this.positionJoueur > maxDeCases) {
-                        this.positionJoueur = maxDeCases;
-                        System.out.println("Case n° " + this.positionJoueur);
-                    }
+//                    System.out.println(e.getMessage());
+                } finally {
+                    resolutionErreurExecption();
                 }
             }
             System.out.println("Vous avez gagné, bravo ! ");
-            genererPlateau();
-            System.out.println("Départ Case n°1: " + this.PLATEAU.get(0));
-            this.positionJoueur = 1;
             str = menuRecommencerQuitter();
-            reInitialisationPersonnage(personnage, str);
+            if(str.equals("p")) {
+                reInitialisationPersonnage(personnage);
+            }
         }
         System.out.println("Au revoir!");
     }
@@ -108,8 +96,30 @@ public class Jeu {
         int scoreDe = de;
         return scoreDe;
     }
-    public void reInitialisationPersonnage(Personnage personnage, String str) {
-        if (str.equals("p")) {
+
+    public void recommencerPartie(Personnage personnage, String str, Case caseEnCours) {
+        if (personnage.getNiveauDeVie() <= 0) {
+            // TODO: réarranger le code pour le mode quitter la partie
+            str = menuRecommencerQuitter();
+            if (str.equals("p")) {
+                reInitialisationPersonnage(personnage);
+                genererPlateau();
+                System.out.println("\n" + "Départ Case n°1: " + this.PLATEAU.get(0));
+                this.positionJoueur = 1;
+                traitementCase(caseEnCours, personnage);
+            } else {
+                // TODO: réparer le au revoir pour en avoir un vrai!
+                System.out.println("Au revoir!");
+            }
+        }
+
+    }
+
+    /**
+     *
+     * @param personnage permet de récupérer le personnage qui se trouve dans la classe Menu
+     */
+    public void reInitialisationPersonnage(Personnage personnage) {
             if (personnage instanceof Magicien) {
                 personnage.setNiveauDeVie(3);
                 personnage.setForceAttaque(8);
@@ -117,7 +127,33 @@ public class Jeu {
                 personnage.setNiveauDeVie(5);
                 personnage.setForceAttaque(5);
             }
-            System.out.println("\n" + personnage);
+    }
+
+    /**
+     * @see # méthode permettant de résoudre l'erreur: renvoie le joueur à la case 64 lorsqu'il sort du plateau
+     */
+    public void resolutionErreurExecption() {
+        int maxDeCases = 64;
+        if (this.positionJoueur > maxDeCases) {
+            this.positionJoueur = maxDeCases;
+            System.out.println("Case n° " + this.positionJoueur);
+        }
+    }
+
+    public void traitementCase(Case caseEnCours, Personnage personnage) {
+        if (caseEnCours instanceof Ennemi) {
+            System.out.println("Vous pouvez combattre (c) ou fuir (f):");
+            System.out.println("!! info: fuir vous fera reculer de 1 à 6 cases");
+            String str1 = sc.nextLine();
+            if (str1.equals("c")) {
+                caseEnCours.interaction(personnage, this.PLATEAU, this.positionJoueur);
+            } else {
+                System.out.println("Vous avez décidé de fuir");
+
+            }
+
+        } else {
+            caseEnCours.interaction(personnage);
         }
     }
 // Création de la fonction 'avancer': avec un paramètre 'positionCase', qui indique la position du joueur
@@ -128,25 +164,26 @@ public class Jeu {
      */
     public void jouerUnTour() throws PersonnageHorsPlateauException {
         int maxDeCases = 64;
-            int scoreDe = lancerLeDe();
-            this.positionJoueur = this.positionJoueur + scoreDe;
+        int scoreDe = lancerLeDe();
+        this.positionJoueur = this.positionJoueur + scoreDe;
 
-            if (this.positionJoueur > maxDeCases) {
-                throw new PersonnageHorsPlateauException();
-            }
+        if (this.positionJoueur > maxDeCases) {
+            throw new PersonnageHorsPlateauException();
+        }
 
-            System.out.println();
-            System.out.println("Case n° " + this.positionJoueur);
-            System.out.println(this.PLATEAU.get(this.positionJoueur - 1));
-
+        System.out.println();
+        System.out.println("Case n° " + this.positionJoueur);
+        System.out.println(this.PLATEAU.get(this.positionJoueur - 1));
     }
     // TODO: faire une boucle permettant la pose après chaque tour de jeu (utilisateur fait entrer pour lancer le dé
     public void caseSuivante() {
-        System.out.println("\n" + " Lancer le dé");
+        System.out.println("\n" + " Appuyez sur la touche 'Entrée' pour lancer le dé");
         String str = sc.nextLine();
         if (str.isEmpty()) {
         }
     }
+
+
 
     /**
      *  @see # méthode permettant de générer le plateau de jeu

@@ -5,6 +5,7 @@ import com.personnages.Personnage;
 import com.plateau.cases.CaseVide;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Ennemi extends Case {
@@ -13,6 +14,7 @@ public class Ennemi extends Case {
     protected String nom = "Cruella";
     protected int niveauDeVie = 15;
     protected int forceAttaque = 4;
+    protected Scanner sc = new Scanner(System.in);
 
     // constructeurs
     public Ennemi() {
@@ -36,17 +38,29 @@ public class Ennemi extends Case {
     // méthodes
 
     public void interaction(Personnage personnage, ArrayList plateau, int positionJoueur) {
-        int vieEnnemi = this.niveauDeVie - personnage.getForceAttaque();
-        setNiveauDeVie(vieEnnemi);
-        if (vieEnnemi <= 0) {
-            plateau.set(positionJoueur, new CaseVide());
-            System.out.println("L'ennemi est mort");
-        } else {
-            int nouvelleVie = personnage.getNiveauDeVie() - this.forceAttaque;
-            personnage.setNiveauDeVie(nouvelleVie);
-            System.out.println("L'ennemi s'est enfui");
+
+        // combat tour à tour
+        int vieEnnemi = this.niveauDeVie;
+        int viePersonnage = personnage.getNiveauDeVie();
+        while (vieEnnemi > 0 && viePersonnage > 0) {
+            System.out.println(" Vous attaquer");
+            vieEnnemi = this.niveauDeVie - personnage.getForceAttaque();
+            setNiveauDeVie(vieEnnemi);
+            if (vieEnnemi <= 0) {
+                plateau.set(positionJoueur - 1, new CaseVide());
+                System.out.println("  Le " + this.nom + " est mort");
+            } else {
+                System.out.println("  Le " + this.nom + " vous attaque !");
+                viePersonnage = personnage.getNiveauDeVie() - this.forceAttaque;
+                personnage.setNiveauDeVie(viePersonnage);
+                if (viePersonnage <= 0) {
+                    System.out.println(" Vous avez perdu...:(");
+                }
+            }
         }
     }
+
+
 
     // getter
     public String getNom() {

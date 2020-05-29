@@ -32,7 +32,7 @@ public class Arme extends Case {
         if (personnage instanceof Guerrier) {
             int nouvelleForce = personnage.getForceAttaque() + this.force;
             if (nouvelleForce <= personnage.getAttaqueMax()) {
-                personnage.setNiveauDeVie(nouvelleForce);
+                personnage.setForceAttaque(nouvelleForce);
             } else {
                 System.out.println("votre niveau d'attaque est au maximun: " + personnage.getAttaqueMax());
             }
