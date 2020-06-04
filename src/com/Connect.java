@@ -8,9 +8,9 @@ import java.sql.*;
 
 
 public class Connect {
-    private static Connection connexion = null;
+    private Connection connexion = null;
 
-    public static Connection getConnexion() throws SQLException {
+    public Connection getConnexion() throws SQLException {
         if (connexion == null || connexion.isClosed()) {
             System.out.println("Driver O.K");
 
@@ -23,7 +23,7 @@ public class Connect {
         }
         return connexion;
     }
-    public static void getHeroes(int id, Personnage personnage) {
+    public void getHeroes(String nom, Personnage personnage) {
         try {
            Connection conn = getConnexion();
             //Création d'un objet Statement
@@ -57,7 +57,7 @@ public class Connect {
         }
     }
 
-    public static void getHero() {
+    public void getHero() {
         try {
             Connection conn = getConnexion();
             //Création d'un objet Statement
@@ -162,13 +162,14 @@ public class Connect {
         }
     }
 
-    public static void deleteHero() {
+    public void deleteHero(Personnage personnage) {
+        PreparedStatement statement = null;
         try {
             Connection conn = getConnexion();
-            String sql = "DELETE FROM hero WHERE id=?";
+            String sql = "DELETE FROM hero WHERE nom=?";
 
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, 9);
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, personnage.getNom());
 
             int rowsDeleted = statement.executeUpdate();
             if (rowsDeleted > 0) {
@@ -177,6 +178,8 @@ public class Connect {
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            this.close(statement);
         }
     }
 
