@@ -3,7 +3,7 @@ package com.plateau.cases;
 import com.donjonsdragons.interactions.Case;
 
 public class CaseVide extends Case {
-    String message = "Case vide";
+    private String message = "Case vide";
 
     // constructeur
 

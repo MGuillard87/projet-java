@@ -81,8 +81,9 @@ public class Jeu {
                 reInitialisationPersonnage(personnage);
             }
         }
-        System.out.println("Au revoir!");
-    }
+            System.out.println("Au revoir!");
+            System.exit(0);
+        }
 
 
     /**

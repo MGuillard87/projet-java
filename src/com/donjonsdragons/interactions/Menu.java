@@ -1,9 +1,11 @@
 package com.donjonsdragons.interactions;
 
+import com.Connect;
 import com.personnages.Guerrier;
 import com.personnages.Magicien;
 import com.personnages.Personnage;
 
+import java.sql.Connection;
 import java.util.Scanner;
 
 /**
@@ -17,6 +19,7 @@ public class Menu {
     private final String MODIF_PERSO_MENU = "Vous pouvez modifier votre personnage";
     private final String INFO_PERSO_MENU = "Voici les informations sur votre personnage";
     private final String GAME_START_MENU = "Démarrer une partie (d)";
+    private Connect connexion = new Connect();
     /**
      * @see # attribut Personnage personnage
      */
@@ -28,7 +31,7 @@ public class Menu {
     /**
      *  @see # attribut Scanner sc
      */
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
 
      /* Le mot-clé final indique qu'on assigner une valeur à la variable
          une seul fois. la convention = nommer les constantes en majuscules.*/
@@ -50,6 +53,7 @@ public class Menu {
                  str1 = choixPerso();
             }
                 creerPersonnage(str1);
+
                 afficherDemarrerPartie();
                 afficherMenuPerso();
                 afficherQuitterJeu();
@@ -90,20 +94,7 @@ public class Menu {
         return str1;
     }
 
-    public void creerPersonnage(String str1) {
-        String choixNom;
-        do {
-            System.out.println("Rentrer le nom du personnage");
-            choixNom = sc.nextLine();
-        } while (choixNom.isEmpty());
-        switch (str1) {
-            case "g":
-                this.personnage = new Guerrier(choixNom);
-                break;
-            default:
-                this.personnage = new Magicien(choixNom);
-        }
-    }
+
 
     /**
      * méthode permettant de démarrer la partie
@@ -154,12 +145,31 @@ public class Menu {
     public void mettreAjourGuerrier() {
         System.out.println("Rentrer un nouveau nom");
         String newNomG = sc.nextLine();
+        connexion.updateHero(newNomG, this.personnage);
         this.personnage.setNom(newNomG);
+
     }
     public void mettreAjourMagicien() {
         System.out.println("Rentrer un nouveau nom");
         String newNomM = sc.nextLine();
+        connexion.updateHero(newNomM, this.personnage);
         this.personnage.setNom(newNomM);
+    }
+
+    public void creerPersonnage(String str1) {
+        String choixNom;
+        do {
+            System.out.println("Rentrer le nom du personnage");
+            choixNom = sc.nextLine();
+        } while (choixNom.isEmpty());
+        switch (str1) {
+            case "g":
+                this.personnage = new Guerrier(choixNom);
+                break;
+            default:
+                this.personnage = new Magicien(choixNom);
+        }
+        connexion.createHero(choixNom,personnage);
     }
 
     /**
