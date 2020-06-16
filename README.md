@@ -12,11 +12,12 @@ How to activate the run:
 - click on menu "edit configurations" 
 - add new configuration
 - choose 'application'
-    Name: Main
-    Main class: com.donjonsdragons.Main
-    working directory: path/to/the/project
+    - Name: Main
+    - Main class: com.donjonsdragons.Main
+    - working directory: path/to/the/project
  - click apply
  
  # to run the game
- click on 'Run'
+ Run the script
+ 
  the game will be displayed in the terminal
